@@ -14,6 +14,7 @@ namespace BlazorApp.Server
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseConfiguration(new ConfigurationBuilder()
+                    .AddJsonFile("appSettings.Json", optional: false, reloadOnChange: true)
                     .AddCommandLine(args)
                     .Build())
                 .UseStartup<Startup>()

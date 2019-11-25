@@ -1,0 +1,18 @@
+﻿@page  "/products-index"
+@inject HttpClient Http
+
+<h3>Products</h3>
+
+@code {
+    public List<Product> products { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await loadProducts();
+    }
+
+    async Task loadProducts()
+    {
+        products = await Http.GetJsonAsync<List<Product>>("products");
+    }
+}
